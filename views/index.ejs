@@ -6,14 +6,19 @@
     <title>Home</title>
 </head>
 <body>
-    <ul>
-        <% for (i = 0; i < messages.length; i++) { %>
-            <li>
-                <p><%= messages[i].user %></p>
-                <p><%= messages[i].text %></p>
-                <p><%= messages[i].added %></p>
-            </li>
-        <% } %>
-    </ul>
+    <div class="content">
+        <ul>
+            <% for (i = 0; i < messages.length; i++) { %>
+                <li>
+                    <p><%= messages[i].user %></p>
+                    <p><%= messages[i].text %></p>
+                    <p><%= messages[i].added %></p>
+                </li>
+            <% } %>
+        </ul>
+        <a href="/new">
+            <button type="button">Write new Message</button>
+        </a>
+    </div>
 </body>
 </html>
