@@ -9,11 +9,13 @@
     <div class="content">
         <ul>
             <% for (i = 0; i < messages.length; i++) { %>
-                <li>
-                    <p><%= messages[i].user %></p>
-                    <p><%= messages[i].text %></p>
-                    <p><%= messages[i].added %></p>
-                </li>
+                <a href="/details/<%= messages[i].id %>">
+                    <li>
+                        <p><%= messages[i].user %></p>
+                        <p><%= messages[i].text %></p>
+                        <p><%= messages[i].added %></p>
+                    </li>
+                </a>
             <% } %>
         </ul>
         <a href="/new">
