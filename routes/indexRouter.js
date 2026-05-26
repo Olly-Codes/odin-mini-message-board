@@ -19,4 +19,19 @@ indexRouter.get("/", (req, res) => {
     res.render("index", { messages: messages});
 });
 
+indexRouter.post("/new", (req, res) => {
+    const messageUser = req.body.user;
+    const messageText = req.body.messageText;
+
+    messages.push(
+        {
+            text: messageUser,
+            user: messageText,
+            added: new Date
+        }
+    );
+
+    res.redirect("/");
+});
+
 module.exports = indexRouter;
