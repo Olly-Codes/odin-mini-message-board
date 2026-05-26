@@ -6,12 +6,14 @@ const messages = [
     {
         text: "Huh, is that the wizard of time?",
         user: "TheCurious",
-        added: new Date().toDateString()
+        added: new Date().toDateString(),
+        id: crypto.randomUUID()
     },
     {
         text: "Who knows, maybe I am, maybe I am not. Only time will tell",
         user: "DefinitelyNotTWOT",
-        added: new Date().toDateString()
+        added: new Date().toDateString(),
+        id: crypto.randomUUID()
     },
 ];
 
@@ -27,11 +29,12 @@ indexRouter.post("/new", (req, res) => {
         {
             text: messageUser,
             user: messageText,
-            added: new Date().toDateString()
+            added: new Date().toDateString(),
+            id: crypto.randomUUID()
         }
     );
 
     res.redirect("/");
 });
 
-module.exports = indexRouter;
+module.exports = { indexRouter, messages };
