@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <h1>Enter your message</h1>
-    <form method="POST" action="/new">
-        <label for="user">Username:</label>
-        <input type="text" id="user" name="user" required>
+    <div class="form-content">
+        <h1>Enter your message</h1>
+            <form method="POST" action="/new">
+                <label for="user">Username:</label>
+                <input type="text" id="user" name="user" required>
 
-        <label for="messageText">Message:</label>
-        <textarea name="messageText" id="messageText"></textarea required>
+                <label for="messageText">Message:</label>
+                <textarea name="messageText" id="messageText"></textarea required>
 
-        <input type="submit" value="Submit">
-    </form>
+                <input class="btn" type="submit" value="Submit">
+            </form>
+    </div>
 </body>
 </html>
