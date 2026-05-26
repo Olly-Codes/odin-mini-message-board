@@ -1,0 +1,103 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --background: #121212;
+    --background-med: hsl(0, 0%, 14%);
+    --background-light: hsl(0, 0%, 30%);
+    --primary-text: #E0E0E0;
+    --secondary-text: #B0B0B0;
+    --border: #444444;
+    --accent: #888888;
+    --button: #1f8fff;
+}
+
+body {
+    background-color: var(--background);
+}
+
+/* ----- CONTENT */
+.heading {
+    color: var(--primary-text);
+    margin-bottom: 10px;
+}
+.content {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content ul {
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    background-color: var(--background-med);
+    border-radius: 5px;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    overflow-y: scroll;
+}
+
+.content ul a {
+    text-decoration: none;
+    color: var(--primary-text);
+    border-radius: 5px;
+    transition: .2s ease all;
+    padding: 10px;
+    background-color: var(--background-light);
+}
+
+.content ul a:hover {
+    background-color: var(--accent);
+}
+
+.content ul a li {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.content ul a li p:first-child::before {
+    content: "@";
+    font-weight: normal;
+    margin-right: 2px;
+}
+
+.content ul a li p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.content ul a li p:last-child {
+    color: var(--secondary-text);
+}
+
+.content a {
+    margin-top: 10px;
+}
+
+.content a button {
+    outline: none;
+    border: transparent;
+    padding: 12px 14px;
+    background-color: var(--button);
+    border-radius: 5px;
+    color: var(--primary-text);
+}
