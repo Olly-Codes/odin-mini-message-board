@@ -6,12 +6,12 @@ const messages = [
     {
         text: "Huh, is that the wizard of time?",
         user: "TheCurious",
-        added: new Date()
+        added: new Date().toDateString()
     },
     {
         text: "Who knows, maybe I am, maybe I am not. Only time will tell",
         user: "DefinitelyNotTWOT",
-        added: new Date()
+        added: new Date().toDateString()
     },
 ];
 
@@ -27,7 +27,7 @@ indexRouter.post("/new", (req, res) => {
         {
             text: messageUser,
             user: messageText,
-            added: new Date
+            added: new Date().toDateString()
         }
     );
 
