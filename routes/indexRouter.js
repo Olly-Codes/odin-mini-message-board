@@ -18,7 +18,7 @@ const messages = [
 ];
 
 indexRouter.get("/", (req, res) => {
-    res.render("index", { messages: messages});
+    res.render("index", { title: "Home", messages: messages});
 });
 
 indexRouter.post("/new", (req, res) => {

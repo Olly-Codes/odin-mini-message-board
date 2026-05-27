@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Form</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-</head>
+    <%- include("./partials/head.ejs") %>
 <body>
     <div class="form-content">
         <h1>Enter your message</h1>
@@ -19,5 +14,6 @@
                 <input class="btn" type="submit" value="Submit">
             </form>
     </div>
+    <%- include("./partials/footer.ejs") %>
 </body>
 </html>
