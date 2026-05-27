@@ -27,8 +27,8 @@ indexRouter.post("/new", (req, res) => {
 
     messages.push(
         {
-            text: messageUser,
-            user: messageText,
+            text: messageText,
+            user: messageUser,
             added: new Date().toDateString(),
             id: crypto.randomUUID()
         }
