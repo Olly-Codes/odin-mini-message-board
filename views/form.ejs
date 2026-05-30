@@ -4,6 +4,7 @@
 <body>
     <div class="form-content">
         <h1>Enter your message</h1>
+        <%- include("partials/errors.ejs") %>
             <form method="POST" action="/new">
                 <label for="user">Username:</label>
                 <input type="text" id="user" name="user" required>
