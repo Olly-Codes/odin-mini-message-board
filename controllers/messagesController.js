@@ -4,3 +4,9 @@ exports.messagesListGet = async (req, res) => {
     const messages = await db.getAllMessages();
     res.render("index", { title: "Home", messages });
 }
+
+exports.messageGet = async (req, res) => {
+    const message_id = req.params.messageId
+    const message = await db.getMessage(message_id);
+    res.render("details", {title: "Details", message })
+}
