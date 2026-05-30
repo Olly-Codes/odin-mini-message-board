@@ -11,6 +11,9 @@
                         <li>
                             <p><%= message.username %></p>
                             <p><%= message.message_content %></p>
+                            <form action="/delete/<%= message.id %>" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
                             <p><%= message.date_added %></p>
                         </li>
                     </a>
