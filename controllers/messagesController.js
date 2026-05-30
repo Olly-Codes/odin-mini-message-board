@@ -14,3 +14,10 @@ exports.messageGet = async (req, res) => {
 exports.newMessageGet = (req, res) => {
     res.render("form", { title: "Create a new message" });
 }
+
+exports.newMessagePost = async (req, res) => {
+    const { user, messageText } = req.body;
+    console.log(user, messageText)
+    await db.insertMessage(user, messageText);
+    res.redirect("/");
+}
