@@ -21,7 +21,32 @@ const getMessage = async (message_id) => {
     return rows[0];
 }
 
+const insertMessage = async (username, message_content) => {
+    let userId;
+    const userCheck = await pool.query(
+        "SELECT id FROM users WHERE username = $1", [username]
+    );
+
+    if (userCheck.rows.length > 0) {
+        userId = userCheck.rows[0].id;
+    } else {
+        const newUser = await pool.query(
+            "INSERT INTO users (username) VALUES ($1) RETURNING id", [username]
+        );
+        userId = newUser.rows[0].id;
+    }
+
+    await pool.query(`
+        INSERT INTO messages (message_content, date_added, user_id) 
+        VALUES
+            ($1, NOW(), $2) 
+        `, [message_content, userId]
+    );
+
+}
+
 module.exports = {
     getAllMessages,
-    getMessage
+    getMessage,
+    insertMessage
 }
