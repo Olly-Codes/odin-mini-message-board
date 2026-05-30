@@ -1,6 +1,7 @@
 # Mini message board
 
 An express js routing and views focused exercise. The goal was creating routes and views to get a better understanding on how to use view engines and tranferring data
+Hosted on Render: https://mini-message-board-enwb.onrender.com/
 
 ## Home
 <img width="1920" height="962" alt="message-board-home" src="https://github.com/user-attachments/assets/88fd8c01-52c5-4e52-b2e7-f9c59f091b2d" />
@@ -15,4 +16,5 @@ An express js routing and views focused exercise. The goal was creating routes a
 
 ## What I learnt
 - Using view engines like ejs for templating
-- How to set up views, routes and styling using express js 
+- How to set up views, routes and styling using express js
+- How to host node projects on services like Render
