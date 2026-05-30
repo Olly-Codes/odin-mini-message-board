@@ -17,6 +17,19 @@ app.use("/", indexRouter);
 app.use("/new", messagesRouter);
 app.use("/details", detailsRouter);
 
+app.use((err, req, res, next) => {
+    console.log(err.stack);
+    const statusCode = err.statusCode || 500;
+
+    const errorMessage = statusCode === 500
+    ? "Something went wrong on our end!" : err.message;
+
+    res.status(statusCode).render("error", {
+        title: `Error ${statusCode}`,
+        message: errorMessage
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
     if (err) {

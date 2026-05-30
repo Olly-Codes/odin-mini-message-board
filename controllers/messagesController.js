@@ -1,29 +1,60 @@
 const db = require("../db/queries");
 
-exports.messagesListGet = async (req, res) => {
-    const messages = await db.getAllMessages();
-    res.render("index", { title: "Home", messages });
+exports.messagesListGet = async (req, res, next) => {
+    try {
+        const messages = await db.getAllMessages();
+        res.render("index", { title: "Home", messages });
+    } catch (err) {
+        next(err);
+    }   
 }
 
-exports.messageGet = async (req, res) => {
-    const message_id = req.params.messageId
-    const message = await db.getMessage(message_id);
-    res.render("details", {title: "Details", message })
+exports.messageGet = async (req, res, next) => {
+    try {
+        const message_id = req.params.messageId
+        const message = await db.getMessage(message_id);
+
+        if (!message) {
+            const error = new Error("The message you are looking for does not exist");
+            error.statusCode = 404;
+            throw error;
+        }
+        res.render("details", {title: "Details", message })
+    } catch (err) {
+        next(err);
+    }
 }
 
 exports.newMessageGet = (req, res) => {
     res.render("form", { title: "Create a new message" });
 }
 
-exports.newMessagePost = async (req, res) => {
-    const { user, messageText } = req.body;
-    console.log(user, messageText)
-    await db.insertMessage(user, messageText);
-    res.redirect("/");
+exports.newMessagePost = async (req, res, next) => {
+    try {
+        const { user, messageText } = req.body;
+        await db.insertMessage(user, messageText);
+        res.redirect("/");
+    } catch {
+        next(err);
+    }
+    
 }
 
-exports.messageDelete = async (req, res) => {
-    const { messageId } = req.params;
-    await db.deleteMessage(messageId);
-    res.redirect("/");
+exports.messageDelete = async (req, res, next) => {
+    try {
+        const { messageId } = req.params;
+
+        const messageExists = await db.getMessage(messageId);
+        if(!messageExists) {
+            const error = new Error("Cannot delete a message that does not exist");
+            error.statusCode = 404;
+            throw error;
+        }
+
+        await db.deleteMessage(messageId);
+        res.redirect("/");
+    } catch (err) {
+        next(err);
+    }
+    
 }
