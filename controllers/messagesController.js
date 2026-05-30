@@ -1,5 +1,16 @@
 const db = require("../db/queries");
 const { formatMessageDate } = require("../utils/dateFormatter");
+const { body, validationResult, matchedData } = require("express-validator");
+
+const alphaErr = "must only contain letters";
+const lengthErr = "must be between 1 and 200 characters";
+
+const validateUser = [
+    body("user").trim()
+    .isAlpha().withMessage(`Username ${alphaErr}`),
+    body("messageText").trim()
+    .isLength({ min: 1, max: 200}).withMessage(`Message content ${lengthErr}`)
+]
 
 exports.messagesListGet = async (req, res, next) => {
     try {
@@ -42,16 +53,26 @@ exports.newMessageGet = (req, res) => {
     res.render("form", { title: "Create a new message" });
 }
 
-exports.newMessagePost = async (req, res, next) => {
-    try {
-        const { user, messageText } = req.body;
-        await db.insertMessage(user, messageText);
-        res.redirect("/");
-    } catch {
-        next(err);
-    }
-    
+exports.newMessagePost = [
+    validateUser,
+    async (req, res, next) => {
+        const validationErrors = validationResult(req);
+        if (!validationErrors.isEmpty()) {
+            return res.status(400).render("form", {
+                title: "Create a new message",
+                errors: validationErrors.array(),
+            });
+        } else {
+            try {
+                const { user, messageText } = req.body;
+                await db.insertMessage(user, messageText);
+                res.redirect("/");
+            } catch {
+                next(err);
+            }
+        } 
 }
+]
 
 exports.messageDelete = async (req, res, next) => {
     try {
