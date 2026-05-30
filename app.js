@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("node:path");
 const app = express();
-const { indexRouter } = require("./routes/indexRouter");
-const messagesRouter = require("./routes/messagesRouter");
-const detailsRouter = require("./routes/detailsRouter");
+const indexRouter = require("./routes/indexRouter");
+// const messagesRouter = require("./routes/messagesRouter");
+// const detailsRouter = require("./routes/detailsRouter");
 
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
@@ -14,8 +14,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
-app.use("/new", messagesRouter);
-app.use("/details", detailsRouter);
+// app.use("/new", messagesRouter);
+// app.use("/details", detailsRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
