@@ -1,20 +1,52 @@
 # Mini message board
 
-An express js routing and views focused exercise. The goal was creating routes and views to get a better understanding on how to use view engines and tranferring data
-Hosted on Render: https://mini-message-board-enwb.onrender.com/
+A simple full-stack mini-message-board built with Node.js, Express, EJS and PostgreSQL
 
 ## Home
-<img width="1920" height="962" alt="message-board-home" src="https://github.com/user-attachments/assets/88fd8c01-52c5-4e52-b2e7-f9c59f091b2d" />
-<br />
-
-## Message Form
-<img width="1920" height="962" alt="message-board-form" src="https://github.com/user-attachments/assets/0314f020-a8df-4858-8dc8-35f25dd77300" />
+<img width="1920" height="962" alt="message-board-home" src="https://github.com/user-attachments/assets/7c5634e2-6ea4-4817-ba3d-401d31036c8d" />
 <br />
 
 ## Message Details
-<img width="1920" height="962" alt="message-board-details" src="https://github.com/user-attachments/assets/f1b819f7-8374-4c13-a657-9df18f76f888" />
+<img width="1920" height="962" alt="message-board-details" src="https://github.com/user-attachments/assets/b8699f90-e0d4-4110-8b0a-c4be5e3fff55" />
+
+## Message Form
+<img width="1920" height="962" alt="message-board-form" src="https://github.com/user-attachments/assets/330c8640-a76d-43b1-a247-839625015b98" />
+<br />
+
+## Message Form Errors
+<img width="1920" height="962" alt="message-board-form-errors" src="https://github.com/user-attachments/assets/44a97a86-21b2-47c2-bcee-4e7fc988705d" />
+<br />
+
+## Features
+- Viewing all messages created on the homepage
+- Submission of new messages via a form
+- Viewing of individual message details
+- Data persistence via PostgreSQL database
+
+## Tech Stack
+- **Backend**: Node.js, Express
+- **Templating**: EJS
+- **Database**: PostgreSQL via `node-postgres` (pg)
+- **Validation**: express-validator
+- **Deployment**: Render
 
 ## What I learnt
-- Using view engines like ejs for templating
-- How to set up views, routes and styling using express js
-- How to host node projects on services like Render
+- MVC project structure with Express routers and controllers
+- Server-side templating with EJS
+- HTML form handling, GET vs POST, `req.body`, PRG pattern
+- Input validation and sanitization with `express-validator`
+- PostgreSQL setup, schema and queries via `node-postgres`
+- Parameterized queries to prevent SQL injection
+- Database seeding via a Node script
+- Environment variables for credentials
+- Deployment to a cloud PaaS provider
+
+## Installation
+1. Clone the repo
+2. Install dependencies: `npm install`
+3. Set up your `.env` with your database connection string
+4. Seed the database: `node db/populatedb.js`
+5. Start the server: `node --watch app.js`
+
+## Live demo
+https://mini-message-board-enwb.onrender.com/
