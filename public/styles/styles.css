@@ -17,6 +17,7 @@
     --text-muted: #6b7a99;
     --text-faint: #4a5568;
     --accent: #1e90ff;
+    --accent-danger: #DC143C ;
     --input-border: #2a3249;
 }
 
@@ -116,6 +117,12 @@ button, .btn {
     font-weight: 500;
     cursor: pointer;
     transition: 0.2s all ease;
+}
+
+.delete-btn {
+    padding: 5px 18px;
+    margin-left: 10px;
+    background-color: var(--accent-danger);
 }
 
 button:hover, .btn:hover {

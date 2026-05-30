@@ -12,7 +12,7 @@
                             <p><%= message.username %></p>
                             <p><%= message.message_content %></p>
                             <form action="/delete/<%= message.id %>" method="POST">
-                                <button type="submit">Delete</button>
+                                <button class="delete-btn" type="submit">Delete</button>
                             </form>
                             <p><%= message.date_added %></p>
                         </li>
@@ -23,7 +23,7 @@
             <% } %>
         </ul>
         <a href="/new">
-            <button type="button">Write new Message</button>
+            <button class="message-btn" type="button">Write new Message</button>
         </a>
     </div>
     <%- include("./partials/footer.ejs") %>
