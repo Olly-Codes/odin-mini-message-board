@@ -1,9 +1,16 @@
 const db = require("../db/queries");
+const { format, parseISO } = require("date-fns");
 
 exports.messagesListGet = async (req, res, next) => {
     try {
         const messages = await db.getAllMessages();
-        res.render("index", { title: "Home", messages });
+        const formattedMessages = messages.map((message) => {
+            return {
+                ...message,
+                date_added: format(message.date_added, 'MMMM d, yyyy h:mm a')
+            }
+        });
+        res.render("index", { title: "Home", messages: formattedMessages });
     } catch (err) {
         next(err);
     }   
