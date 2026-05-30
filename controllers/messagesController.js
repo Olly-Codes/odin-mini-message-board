@@ -10,3 +10,7 @@ exports.messageGet = async (req, res) => {
     const message = await db.getMessage(message_id);
     res.render("details", {title: "Details", message })
 }
+
+exports.newMessageGet = (req, res) => {
+    res.render("form", { title: "Create a new message" });
+}
