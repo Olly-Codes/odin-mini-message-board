@@ -45,8 +45,15 @@ const insertMessage = async (username, message_content) => {
 
 }
 
+const deleteMessage = async (messsage_id) => {
+    const { rows } = await pool.query(
+        "DELETE FROM messages WHERE id = $1", [messsage_id]
+    )
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
-    insertMessage
+    insertMessage,
+    deleteMessage
 }

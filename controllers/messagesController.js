@@ -21,3 +21,9 @@ exports.newMessagePost = async (req, res) => {
     await db.insertMessage(user, messageText);
     res.redirect("/");
 }
+
+exports.messageDelete = async (req, res) => {
+    const { messageId } = req.params;
+    await db.deleteMessage(messageId);
+    res.redirect("/");
+}
